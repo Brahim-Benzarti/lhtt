@@ -42,7 +42,18 @@
                             </div>
                         </li>
                         <li class="nav-item"><a href="<% if(locals.user == null){ %>/contact<% }else{%>/users/contact<% } %>" class="nav-link">Contact me</a></li>
-                        <% if(locals.user == null){ %> <li class="nav-item"><a class="nav-link" href="/account">Account</a></li><% }else{ %> <li class="nav-item"><a class="nav-link" href="/users/sign_out"><%= locals.user.name %> </a></li> <% } %>
+                        <% if(locals.user == null){ %> 
+                            <li class="nav-item"><a class="nav-link" href="/account">Account</a></li
+                        ><% }else{ %> 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= locals.user.name %></a>
+                                <div class="dropdown-menu">
+                                <form action="/users/?_=DELETE" method="post">
+                                    <input class="dropdown-item" id="signout" type="submit" value="Sign-out">
+                                </form>
+                                </div>
+                            </li>
+                        <% } %>
                     </ul>
                 </div>  
             </nav>

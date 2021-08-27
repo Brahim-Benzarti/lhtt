@@ -10,6 +10,11 @@ router.get('/',checkAuthenticated , function(req, res) {
   res.render('index');
 });
 
+router.delete('/',checkAuthenticated, (req, res) => {
+  req.logOut()
+  res.redirect('/')
+})
+
 router.get('/cheat',checkAuthenticated, async (req,res)=>{
   let current_user= await req.user;
   let query= await Users.remove({_id:current_user._id});
@@ -111,9 +116,6 @@ router.get('/texts',checkAuthenticated, async (req,res) =>{
   })
 })
 
-router.get('/sign_out',checkAuthenticated, (req, res) =>{
-  res.render('sign_out');
-})
 
 router.post('/_save', checkAuthenticated, async (req,res)=>{
   let current_user= await req.user;
@@ -137,10 +139,7 @@ router.post('/_save', checkAuthenticated, async (req,res)=>{
   }
 })
 
-router.delete('/sign_out',checkAuthenticated, (req, res) => {
-  req.logOut()
-  res.redirect('/')
-})
+
 
 async function checkAuthenticated (req, res, next) {
   if (req.isAuthenticated()) {    
