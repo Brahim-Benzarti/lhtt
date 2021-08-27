@@ -3,12 +3,12 @@
         <% 
         if( locals.user != null && previous != null){
             if( current.time_sec >= previous.time_sec && current.err >= previous.err){
-                if(Math.floor((Math.random() * 9) + 1)==6){ %>
+                if(Math.floor((Math.random() * 5) + 1)==3){ %>
                     <video height="280" autoplay>
-                        <source src="/gifs/bad/6.mp4" type="video/mp4">
+                        <source src="/gifs/bad/vid1.mp4" type="video/mp4">
                     </video>
                 <% }else{ %>
-                    <img src="/gifs/bad/<%= Math.floor((Math.random() * 9) + 1) %>.gif" style="width:100%;height:300px;">
+                    <img src="/gifs/bad/<%= Math.floor((Math.random() * 8) + 1) %>.gif" style="width:100%;height:300px;">
                 <% }
             }else{ %>
                 <img src="/gifs/good/<%= Math.floor((Math.random() * 7) + 1) %>.gif" style="width:100%;height:300px;">
