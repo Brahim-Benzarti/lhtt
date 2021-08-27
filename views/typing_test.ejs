@@ -1,0 +1,32 @@
+<div class="container" id="welcome">
+    <div class="row justify-content-center">
+        <div class="display-4"><%= title %></div>
+    </div>
+    <div class="row mt-4">
+        <p class="text-to-type"><span id="correct" style="color:#3a36f9;"></span><span id="focused"></span><span oncopy="cheater();" id="target"><% if(title=="Speed typing test"){content.forEach(word=>{ %><%= word.word %> <% })}else{ %><%= content %><% } %></span></p>
+    </div>
+    <div class="row mt-2">
+        <textarea class="form-control" id="current" cols="10" rows="1" placeholder="Type Here!" onpaste="cheater();" oninput="text_check(getElementById('target'),getElementById('correct'),getElementById('current'),getElementById('focused'),$('#customSwitches').prop('checked'))"></textarea>
+    </div>
+    <div class="row mt-2 justify-content-end">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches" onclick="redo();">
+            <label class="custom-control-label" for="customSwitches">Block mistakes</label>
+        </div>
+    </div>
+    <div class="row mt-2 justify-content-center">
+        <input class="btn btn-warning" type="button" value="Reset" onclick="redo();">
+    </div>
+    <div style="display: none;">
+        <input type="text" name="text_id" id="text_id" value="<%= id %>">
+    </div>
+</div>
+
+
+<!-- Button to Open the Modal -->
+<button id="showmodal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: none;">Open modal</button>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+
+</div>

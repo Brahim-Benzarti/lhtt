@@ -1,0 +1,183 @@
+<div class="modal-dialog modal-md modal-dialog-centered flex-column">
+
+        <% 
+        if( locals.user != null && previous != null){
+            if( current.time_sec >= previous.time_sec && current.err >= previous.err){
+                if(Math.floor((Math.random() * 9) + 1)==6){ %>
+                    <video height="280" autoplay>
+                        <source src="/gifs/bad/6.mp4" type="video/mp4">
+                    </video>
+                <% }else{ %>
+                    <img src="/gifs/bad/<%= Math.floor((Math.random() * 9) + 1) %>.gif" style="width:100%;height:300px;">
+                <% }
+            }else{ %>
+                <img src="/gifs/good/<%= Math.floor((Math.random() * 7) + 1) %>.gif" style="width:100%;height:300px;">
+            <% }
+        }else{ %>
+            <img src="/gifs/good/<%= Math.floor((Math.random() * 7) + 1) %>.gif" style="width:100%;height:300px;">
+        <% } %>
+
+    <div class="modal-content banner-bg">
+<% if( locals.user == null ){ %>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title eval_msg">Well Done</h4>
+        </div>
+        <div class="modal-body"id="not_saved">
+            <p>Sign in to track your performance and get the BEST SCORE <a href="/connect"></a> </p>
+        </div>
+        <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+            <a href="/" class="btn btn-danger">Finish</a>
+        </div>
+    </div>
+<% }else if(previous == null){ %>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title eval_msg">Good job!</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+                    <h3>Time: <%= current.time%></h3>
+                </div>
+                <div class="col">
+                    <h3>Mistakes: <%= current.err%></h3>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+            <a href="/" class="btn btn-danger">Finish</a>
+        </div>
+    </div>
+<% }else{ 
+    if( current.time==previous.time && current.err==previous.err){ %>
+            <div>
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title eval_msg">Stable!</h4>
+                    <p style="margin: 0;">You can do better</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Time: <%= current.time%></h3>
+                            <p><b> last time it was </b><%= previous.time%></p>
+                        </div>
+                        <div class="col">
+                            <h3>Mistakes: <%= current.err%></h3>
+                            <p><b> it was </b><%= previous.err%></p>
+                        </div>
+                    </div>
+                    </div>
+                <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+                    <a href="/" class="btn btn-danger">Finish</a>
+                </div>
+            </div>
+    <% }
+    else if( current.time_sec >= previous.time_sec ){
+        if( current.err >= previous.err){ %>
+            <div>
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title eval_msg text-danger">Not good at all!</h4>
+                    <p style="margin: 0;">Slower and Sloppier</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Time: <%= current.time%></h3>
+                            <p><b> last time it was </b><%= previous.time%></p>
+                        </div>
+                        <div class="col">
+                            <h3>Mistakes: <%= current.err%></h3>
+                            <p><b> it was </b><%= previous.err%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+                    <a href="/" class="btn btn-danger">Finish</a>
+                </div>
+            </div>
+        <% }else{ %>
+            <div>
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title eval_msg">Not bad, Keep up!</h4>
+                    <p style="margin: 0;">Slower but Precise</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Time: <%= current.time%></h3>
+                            <p><b> last time it was </b><%= previous.time%></p>
+                        </div>
+                        <div class="col">
+                            <h3>Mistakes: <%= current.err%></h3>
+                            <p><b> it was </b><%= previous.err%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+                    <a href="/" class="btn btn-danger">Finish</a>
+                </div>
+            </div>
+        <% }
+    }else{
+        if( current.err > previous.err){ %>
+            <div>
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title eval_msg">Not bad, Keep up!</h4>
+                    <p style="margin: 0;">Faster but Sloppier</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Time: <%= current.time%></h3>
+                            <p><b> last time it was </b><%= previous.time%></p>
+                        </div>
+                        <div class="col">
+                            <h3>Mistakes: <%= current.err%></h3>
+                            <p><b> it was </b><%= previous.err%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+                    <a href="/" class="btn btn-danger">Finish</a>
+                </div>
+            </div>
+        <% }else{ %>
+            <div>
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title eval_msg">Great!</h4>
+                    <p style="margin: 0;">Fast and Precise</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Time: <%= current.time%></h3>
+                            <p><b> last time it was </b><%= previous.time%></p>
+                        </div>
+                        <div class="col">
+                            <h3>Mistakes: <%= current.err%></h3>
+                            <p><b> it was </b><%= previous.err%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start ml-2" style="border-top:0;">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Again</button>
+                    <a href="/" class="btn btn-danger">Finish</a>
+                </div>
+            </div>
+        <% } 
+    }
+} %> 
+
+    </div>
+</div>
+
+<script>
+document.getElementById('showmodal').click();
+</script>

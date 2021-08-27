@@ -1,0 +1,28 @@
+body{
+  color: white;
+  background: url(../images/banner-bg.png) no-repeat fixed center;
+}
+
+.banner-bg{
+  background: url(../images/banner-bg.png) no-repeat;
+  background-size: cover;
+}
+
+a{
+  color: white;
+}
+
+.label{
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.text-to-type{
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.eval_msg{
+  font-size: 40px;
+  font-weight: bold;
+}

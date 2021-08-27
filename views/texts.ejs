@@ -1,0 +1,29 @@
+<div  class="welcome-area" id="welcome">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="texts" method="POST" id="F">
+                    <div class="form-group">
+                        <label class="label" for="texts">Select a text:</label>
+                        <select class="form-control" name="texts" oninput="text();">
+                            <option></option>
+                            <% text.forEach(text => { %>
+                                <option id='<%= text._id %>' value='<%= text._id %>'><%= text.title %></option>
+                            <% }); %> 
+                        </select>
+                    </div>
+                    <div id="info_show">
+                        <% if(text_show){ %>
+                            <script>
+                                document.getElementById("<%= text0._id %>").selected = true;
+                            </script>
+                            <%- include('_info_show') %>
+                        <% } %> 
+                    </div>
+                    <input type="text" name="v" id="v" style="display: none;" value="0">
+                    <input type="submit" id="show" style="display: none;">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

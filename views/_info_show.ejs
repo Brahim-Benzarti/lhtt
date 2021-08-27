@@ -1,0 +1,23 @@
+<% if(text_show){ %>
+    <h2><li>Content</li></h2>
+    <p>
+        <% if(text0.content.length>100){ %>
+        <%= (text0.content).substr(0,100)+"..." %> 
+        <% }else{ %> 
+        <%= text0.content %> 
+        <% } %> 
+    </p>
+    <% if(text0.creator!= undefined){ %>
+        <h2><li>Creator</li></h2>
+        <p><%= text0.creator %> </p>
+    <% } %> 
+    <% if(best!= null){ %>
+        <h2><li>Best attempt</li></h2>
+        <h4><%= best_person.name %></h4>
+        <p><b>Time: </b><%= best.time %></p>
+        <p><b>Mistakes: </b><%= best.err %></p>
+    <% } %> 
+    <div class="row justify-content-center">
+        <input class="btn btn-warning" type="submit" value="Give it a Try!" onclick="document.getElementById('v').value='';">
+    </div>
+<% } %> 

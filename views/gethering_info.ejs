@@ -1,0 +1,21 @@
+<div  class="container" id="welcome">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <form method="POST" id="myform" action="<% if(locals.user == null){ %>/gethering_info<% }else{%>/users/gethering_info<% } %>">
+                <div class="form-group">
+                    <label class="label" for="toul">Please choose the difficulty: </label>
+                    <select class="form-control" name="toul" id="toul">
+                        <option value="30">Short</option>
+                        <option value="60">Normal</option>
+                        <option value="90">Long</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-2">
+            <input style="width: 100%;" class="btn btn-warning" form="myform" type="submit" value="Go!">
+        </div>
+    </div>
+</div>

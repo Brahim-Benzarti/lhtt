@@ -1,0 +1,55 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>LHTT</title>
+    <link rel = "icon" href="/images/web_icon.png" type ="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <script type="text/javascript" src="/javascripts/test_result.js"></script>
+    <script src="/javascripts/jQuery.js"></script>
+
+
+
+    
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-xl sticky-top">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/web_icon.png" style="height:40px;width:40px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <img src="/images/nav-toggler.svg" class="navbar-toggler-icon"></img>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a href="<% if(locals.user == null){ %>/<% }else{%>/users<% } %>" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="<% if(locals.user == null){ %>/texts<% }else{%>/users/texts<% } %>" class="nav-link">Texts</a></li>
+                        <% if(locals.user != null){ %> <li class="nav-item"><a href="/users/add" class="nav-link">Add content</a></li><% } %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            More
+                            </a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/still">About Me</a>
+                            <a class="dropdown-item" href="/still">Features</a>
+                            <a class="dropdown-item" href="/still">Blog</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="<% if(locals.user == null){ %>/contact<% }else{%>/users/contact<% } %>" class="nav-link">Contact me</a></li>
+                        <% if(locals.user == null){ %> <li class="nav-item"><a class="nav-link" href="/account">Account</a></li><% }else{ %> <li class="nav-item"><a class="nav-link" href="/users/sign_out"><%= locals.user.name %> </a></li> <% } %>
+                    </ul>
+                </div>  
+            </nav>
+        </div>
+    </header>
+    <main class="py-5" style="min-height:58vh;">
+        <%- body %> 
+    </main>
+    </body>
+</html>
