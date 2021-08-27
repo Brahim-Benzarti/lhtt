@@ -1,6 +1,7 @@
 body{
   color: white;
   background: url(../images/banner-bg.png) no-repeat fixed center;
+  background-size: cover;
 }
 
 .banner-bg{
